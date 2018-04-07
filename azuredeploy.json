@@ -9,9 +9,9 @@
     }
   },
   "variables": {
-    "OnPremVNETPrefix": "10.0.0.0/16",
-    "OnPremVNETSubnet1Name": "VMHOST",
-    "OnPremVNETSubnet1Prefix": "10.0.0.0/24",
+    "STRGVNETPrefix": "10.0.0.0/16",
+    "STRGVNETSubnet1Name": "VMHOST",
+    "STRGVNETSubnet1Prefix": "10.0.0.0/24",
     "HyperVHostName": "HYPERVHOST",
     "HyperVHostAdminUserName": "stormtrooper",
     "HyperVHostAdminPassword": "Password.1!!",
@@ -20,39 +20,39 @@
     "HyperVHostWindowsOSVersion": "2016-Datacenter",
     "HyperVHostOSDiskName": "[concat(variables('HyperVHostName'), '-OSDISK')]",
     "HyperVHostVmSize": "Standard_D2s_v3",
-    "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'OnPremVNET')]",
-    "HyperVHostSubnetRef": "[concat(variables('HyperVHostVnetID'), '/subnets/', variables('OnPremVNETSubnet1Name'))]",
+    "HyperVHostVnetID": "[resourceId('Microsoft.Network/virtualNetworks', 'STRGVNET')]",
+    "HyperVHostSubnetRef": "[concat(variables('HyperVHostVnetID'), '/subnets/', variables('STRGVNETSubnet1Name'))]",
     "HyperVHostNicName": "[concat(variables('HyperVHostName'), '-NIC')]",
     "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-PIP')]",
     "HyperVHostConfigArchiveFolder": ".",
     "HyperVHostConfigArchiveFileName": "HyperVHostConfig.zip",
-    "HyperVHostConfigURL": "https://github.com/solliancenet/bcdr/blob/master/CustomScripts/HyperVHostConfig.zip?raw=true",
+    "HyperVHostConfigURL": "https://github.com/deltadan/azurenestedhyperv/blob/master/CustomScripts/HyperVHostConfig.zip?raw=true",
     "HyperVHostInstallHyperVScriptFolder": ".",
     "HyperVHostInstallHyperVScriptFileName": "InstallHyperV.ps1",
-    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/solliancenet/bcdr/master/CustomScripts/InstallHyperV.ps1"
+    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/deltadan/azurenestedhyperv/master/CustomScripts/InstallHyperV.ps1"
 
   },
   "resources": [
     {
-      "name": "OnPremVNET",
+      "name": "STRGVNET",
       "type": "Microsoft.Network/virtualNetworks",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
       "dependsOn": [],
       "tags": {
-        "displayName": "OnPremVNET"
+        "displayName": "STRGVNET"
       },
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
-            "[variables('OnPremVNETPrefix')]"
+            "[variables('STRGVNETPrefix')]"
           ]
         },
         "subnets": [
           {
-            "name": "[variables('OnPremVNETSubnet1Name')]",
+            "name": "[variables('STRGVNETSubnet1Name')]",
             "properties": {
-              "addressPrefix": "[variables('OnPremVNETSubnet1Prefix')]"
+              "addressPrefix": "[variables('STRGVNETSubnet1Prefix')]"
             }
           }
         ]
@@ -80,7 +80,7 @@
       "location": "[resourceGroup().location]",
       "apiVersion": "2017-10-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/virtualNetworks', 'OnPremVNET')]",
+        "[resourceId('Microsoft.Network/virtualNetworks', 'STRGVNET')]",
         "[resourceId('Microsoft.Network/publicIPAddresses', variables('HyperVHost-PUBIPName'))]"
       ],
       "tags": {
