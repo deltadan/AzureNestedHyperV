@@ -26,10 +26,10 @@
     "HyperVHost-PUBIPName": "[concat(variables('HyperVHostName'), '-PIP')]",
     "HyperVHostConfigArchiveFolder": ".",
     "HyperVHostConfigArchiveFileName": "HyperVHostConfig.zip",
-    "HyperVHostConfigURL": "https://github.com/deltadan/azurenestedhyperv/blob/master/CustomScripts/HyperVHostConfig.zip?raw=true",
+    "HyperVHostConfigURL": "https://github.com/deltadan/AzureNestedHyperV/blob/master/customscripts/HyperVHostConfig.zip?raw=true",
     "HyperVHostInstallHyperVScriptFolder": ".",
     "HyperVHostInstallHyperVScriptFileName": "InstallHyperV.ps1",
-    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/deltadan/azurenestedhyperv/master/CustomScripts/InstallHyperV.ps1"
+    "HyperVHostInstallHyperVURL": "https://raw.githubusercontent.com/deltadan/AzureNestedHyperV/master/customscripts/InstallHyperV.ps1"
 
   },
   "resources": [

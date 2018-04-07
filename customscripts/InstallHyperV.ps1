@@ -4,7 +4,7 @@ Azure Nested VV Host Configuration
  - InstallHyperV.ps1
  
 .What calls this script?
- - This is a PowerShell DSC run as a Custom Script extention called by azuredeploy.json
+ - This is a PowerShell Script run as a Custom Script extention called by azure-deploy.json
 
 .What does this script do?  
  - Downloads NuGet package provider
