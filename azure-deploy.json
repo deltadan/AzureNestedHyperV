@@ -13,7 +13,7 @@
     "STRGVNETSubnet1Name": "VMHOST",
     "STRGVNETSubnet1Prefix": "10.0.0.0/24",
     "HyperVHostName": "HYPERVHOST",
-    "HyperVHostAdminUserName": "stormtrooper",
+    "HyperVHostAdminUserName": "stormtrooperio",
     "HyperVHostAdminPassword": "Password.1!!",
     "HyperVHostImagePublisher": "MicrosoftWindowsServer",
     "HyperVHostImageOffer": "WindowsServer",

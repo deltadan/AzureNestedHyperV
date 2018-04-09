@@ -8,7 +8,7 @@ Azure Nested VV Host Configuration
 
 .What does this script do?  
  - Creates an Internal Switch in Hyper-V called "Nat Switch"
- - Creates a NAT Network on 192.168.0.0/24
+ - Creates a NAT Network on 192.168.0.0/24.  (All of your Nested VMs need static IPs on this network)
  - Add a new IP address to the Internal Network for Hyper-V attached to the NAT Switch
 
  There are also commented commands that you could use to automatically provision machines
@@ -47,7 +47,6 @@ Configuration Main
 		
 			SetScript =
 			{
-
 				$NatSwitch = Get-NetAdapter -Name "vEthernet (NAT Switch)"
 				New-NetIPAddress -IPAddress 192.168.0.1 -PrefixLength 24 -InterfaceIndex $NatSwitch.ifIndex
 				New-NetNat -Name NestedVMNATnetwork -InternalIPInterfaceAddressPrefix 192.168.0.0/24 -Verbose
@@ -60,7 +59,7 @@ Configuration Main
 #				New-VM -Name VMNAME `
 #					   -MemoryStartupBytes 2GB `
 #					   -BootDevice VHD `
-#					   -VHDPath 'C:\VM\PATH\OnPremLinuxVM.vhdx' `
+#					   -VHDPath 'C:\VM\PATH\FILENAME.vhd' `
 #                      -Path 'C:\VM\PATH' `
 #					   -Generation 1 `
 #				       -Switch "NAT Switch"
